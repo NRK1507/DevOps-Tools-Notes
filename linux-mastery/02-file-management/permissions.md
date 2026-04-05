@@ -15,3 +15,14 @@ Each file has:
 | x | Execute |
 
 ## Example
+-rwxr-xr--
+
+## Commands
+
+'''bash
+chmod 755 file.sh
+chown user:group file.sh
+
+## DevOps Use Cases
+- Secure keys → chmod 400 key.pem
+- Restrict configs → chmod 600 .en
