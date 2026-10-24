@@ -1,0 +1,3 @@
+- User creation
+- Groups & permissions
+- Sudo access (important for production)
