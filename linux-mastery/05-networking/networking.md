@@ -1,0 +1,3 @@
+- IP, DNS, routing
+- Debugging connectivity
+- Port & service checks
