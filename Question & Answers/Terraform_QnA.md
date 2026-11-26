@@ -849,4 +849,54 @@ resource "null_resource" "example" {
 
 ---
 
+## Real-Time Interview Questions
+
+<details>
+<summary>1. How is your infrastructure currently managed, and what are the existing Terraform configurations?</summary>
+
+→ Infrastructure is managed as code in a dedicated repo with a modular structure (`modules/`, `env/dev/`, `env/prod/`).
+
+→ State is stored in Azure Storage with locking.
+
+→ CI/CD pipeline runs `plan` on PR, `apply` on merge, with a manual gate for production.
+
+</details>
+
+<details>
+<summary>2. What are the key components of your infrastructure that need to be defined in Terraform?</summary>
+
+→ Resource groups, VNets, subnets, NSGs, and route tables.
+
+→ AKS clusters, node pools, and associated identities.
+
+→ ACR, Key Vaults, Storage accounts (with private endpoints), and Application Gateway.
+
+→ Monitoring (Log Analytics, App Insights), DNS zones, and RBAC assignments.
+
+</details>
+
+<details>
+<summary>3. How do you handle state management and locking with Terraform?</summary>
+
+→ Use a remote backend (Azure Storage or S3).
+
+→ State locking is provided by blob leases (Azure) or DynamoDB (AWS).
+
+<pre>
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "tfstate-rg"
+    storage_account_name = "tfstatestorage"
+    container_name       = "tfstate"
+    key                  = "prod.terraform.tfstate"
+  }
+}
+</pre>
+
+→ State files are versioned; recover from prior versions if needed.
+
+</details>
+
+---
+
 *Maintained for interview preparation. Answers are hidden by default — click any question to reveal.*
